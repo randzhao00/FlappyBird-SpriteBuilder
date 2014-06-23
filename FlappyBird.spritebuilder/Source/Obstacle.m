@@ -9,8 +9,8 @@
 #import "Obstacle.h"
 
 @implementation Obstacle {
-  CCNode *_topPipe;
-  CCNode *_bottomPipe;
+    CCNode *_topPipe;
+    CCNode *_bottomPipe;
 }
 
 #define ARC4RANDOM_MAX      0x100000000
@@ -21,18 +21,18 @@ static const CGFloat minimumYPosition = 200.f;
 static const CGFloat maximumYPosition = 380.f;
 
 - (void)didLoadFromCCB {
-  _topPipe.physicsBody.collisionType = @"level";
-  _topPipe.physicsBody.sensor = YES;
-
-  _bottomPipe.physicsBody.collisionType = @"level";
-  _bottomPipe.physicsBody.sensor = YES;
+    _topPipe.physicsBody.collisionType = @"level";
+    _topPipe.physicsBody.sensor = YES;
+    
+    _bottomPipe.physicsBody.collisionType = @"level";
+    _bottomPipe.physicsBody.sensor = YES;
 }
 
 - (void)setupRandomPosition {
-  // value between 0.f and 1.f
-  CGFloat random = ((double)arc4random() / ARC4RANDOM_MAX);
-  CGFloat range = maximumYPosition - minimumYPosition;
-  self.position = ccp(self.position.x, minimumYPosition + (random * range));
+    // value between 0.f and 1.f
+    CGFloat random = ((double)arc4random() / ARC4RANDOM_MAX);
+    CGFloat range = maximumYPosition - minimumYPosition;
+    self.position = ccp(self.position.x, minimumYPosition + (random * range));
 }
 
 @end
