@@ -5,6 +5,9 @@
 //  Created by Benjamin Encz on 10/10/13.
 //  Copyright (c) 2014 MakeGamesWithUs inc. Free to use for all purposes.
 //
+
+#import "MainScene.h"
+#import "Obstacle.h"
 @interface CGPointObject : NSObject
 {
     CGPoint _ratio;
@@ -17,15 +20,12 @@
 +(id) pointWithCGPoint:(CGPoint)point offset:(CGPoint)offset;
 -(id) initWithCGPoint:(CGPoint)point offset:(CGPoint)offset;
 @end
-#import "MainScene.h"
-CGPoint _cloudParallaxRatio;
-CGPoint _bushParallaxRatio;
-
-CCNode *_parallaxContainer;
-CCParallaxNode *_parallaxBackground;
-#import "Obstacle.h"
-
 @implementation MainScene {
+    CGPoint _cloudParallaxRatio;
+    CGPoint _bushParallaxRatio;
+    
+    CCNode *_parallaxContainer;
+    CCParallaxNode *_parallaxBackground;
     CCNode *_ground1;
     CCNode *_ground2;
     NSArray *_grounds;
