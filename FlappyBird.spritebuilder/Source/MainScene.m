@@ -24,6 +24,8 @@
     CGPoint _cloudParallaxRatio;
     CGPoint _bushParallaxRatio;
     
+    CCNode* _mainscene;
+    
     CCNode *_parallaxContainer;
     CCParallaxNode *_parallaxBackground;
     CCNode *_ground1;
@@ -252,6 +254,22 @@
             for (CGPointObject *child in _parallaxBackground.parallaxArray) {
                 if (child.child == cloud) {
                     child.offset = ccp(child.offset.x + 2*cloud.contentSize.width, child.offset.y);
+                }
+            }
+        }
+    }
+    for (CCNode *background in _mainscene) {
+        // get the world position of the cloud
+        CGPoint backWoldPosition = [_parallaxBackground convertToWorldSpace:background.position];
+        // get the screen position of the cloud
+        CGPoint backScreenPosition = [self convertToNodeSpace:backWoldPosition];
+        
+        // if the left corner is one complete width off the screen,
+        // move it to the right
+        if (backScreenPosition.x <= (-1 * background.contentSize.width)) {
+            for (CGPointObject *child in _parallaxBackground.parallaxArray) {
+                if (child.child == background) {
+                    child.offset = ccp(child.offset.x + 2*background.contentSize.width, child.offset.y);
                 }
             }
         }
