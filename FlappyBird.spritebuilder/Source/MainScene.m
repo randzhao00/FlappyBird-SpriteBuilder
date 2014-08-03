@@ -261,7 +261,7 @@
             }
         }
     }
-    for (CCNode *background in _mainscene) {
+    for (CCNode *background in _backgrounds) {
         // get the world position of the cloud
         CGPoint backWoldPosition = [_parallaxBackground convertToWorldSpace:background.position];
         // get the screen position of the cloud
